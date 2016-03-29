@@ -136,5 +136,8 @@ body {
   font-size: 1.5em;
   text-align: center; }
 
+img {
+  width: 100%; }
+
 fieldset {
   border: none; }

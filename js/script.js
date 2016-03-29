@@ -24,9 +24,30 @@ app.getSelectedValues = function () {
 		var selectedHeight = $('.height').val();
 		var selectedWidth = $('.width').val();
 
+		var unsplashUrlSize = "https://source.unsplash.com/category/" + selectedCategory + "/" + selectedWidth + "x" + selectedHeight;
+
+		var unsplashUrl = "https://source.unsplash.com/category/" + selectedCategory;
+
 		console.log(selectedCategory);
 		console.log(selectedHeight);
 		console.log(selectedWidth);
+
+		if (selectedHeight == "" && selectedWidth == "") {
+			console.log(unsplashUrl);
+
+			var unsplashUrlImg = $('<div>').html('<img src="' + unsplashUrl + '" alt="">');
+
+			console.log(unsplashUrlImg);
+
+			var unsplashUrlImgContainer = $('.imgContainer').append(unsplashUrlImg);
+
+			var colorThief = new ColorThief();
+			colorThief.getPalette(unsplashUrlImgContainer, 8);
+
+			$('.displayColor').append(colorThief);
+		} else {
+			console.log(unsplashUrlSize);
+		}
 	}); //end of submit
 };
 
