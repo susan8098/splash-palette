@@ -6,19 +6,13 @@ $(function () {
 
 var app = {};
 
+app.url = window.location;
+
 app.getSelectedValues = function () {
 
 	// When user selects from the dropdown menu
 	$('select').change(function () {
 		console.log("option changed!");
-
-		// ajax call to php to delete/ clear photo
-		// $.ajax({
-		// 	url: '/image-delete.php',
-		// 	type: 'POST'
-		// }).then(function () {
-		// 	console.log('image deleted');
-		// });
 
 		// Get the selected cateogry type from user
 		var selectedCategory = $(this).find(':selected').text();
@@ -30,13 +24,13 @@ app.getSelectedValues = function () {
 
 		//ajax call for downloading the image to server
 		$.ajax({
-			url: '/image-download.php',
+			url: app.url + '/image-download.php',
 			type: 'POST',
 			data: {
 				imageUrl: unsplashUrl
 			}
-
 		}).then(function () {
+			// $('.colorBox').css({ "background": "none" });
 			// run display image function
 			app.displayImage();
 			$('.form-color').fadeIn(400);
@@ -56,17 +50,16 @@ $('.form-color').on('submit', function (e) {
 app.displayImage = function () {
 
 	// wrapping the url with image tag
-	var unsplashImgTag = '<img id="myImage" src="images/photo.jpg" alt="">';
+	var unsplashImgTag = '<img id="myImage" src="images/photo.jpg?'+(+new Date())+'" alt="">';
 
 	console.log(unsplashImgTag);
-
 	// displaying the image insde imgContainer
 	$('header').css({
-		"background": "url(images/photo.jpg)",
+		"background": "url(images/photo.jpg?"+(+new Date())+ ")",
 		"background-size": "cover"
 	});
 
-	$('.imgContainer').append(unsplashImgTag);
+	$('.imgContainer').html(unsplashImgTag);
 
 	var myImage = $('#myImage')[0];
 
