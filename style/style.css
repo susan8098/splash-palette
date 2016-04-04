@@ -128,16 +128,123 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 * {
   box-sizing: border-box; }
 
+@font-face {
+  font-family: beats;
+  src: url(../font/Beats-New.otf); }
+
 html {
   font-size: 62.5%; }
 
 body {
   font-size: 15px;
   font-size: 1.5em;
-  text-align: center; }
+  text-align: center;
+  font-family: courier; }
+
+h1 {
+  margin: 0;
+  font-family: 'beats';
+  text-transform: uppercase;
+  font-size: 8rem; }
+
+h2 {
+  font-weight: 400;
+  font-size: 1.6rem; }
+
+header {
+  width: 100%;
+  height: 80vh;
+  background: tomato;
+  background-size: cover;
+  background-position: center;
+  transition: background .3s;
+  color: white;
+  position: relative; }
+  header .headerText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); }
+  header .userSelect {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0); }
+  header .download {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+    margin: .5rem;
+    display: none; }
+    header .download a {
+      color: white;
+      transition: all .3s;
+      text-decoration: none; }
+      header .download a:hover {
+        color: tomato; }
+      header .download a i {
+        margin-right: 1rem; }
 
 img {
   width: 100%; }
 
 fieldset {
   border: none; }
+
+select {
+  border: none;
+  background: transparent;
+  color: white; }
+
+form.form-color {
+  display: none; }
+
+input[type=submit] {
+  border: none;
+  background-color: black;
+  color: white;
+  padding: 1rem 2.5rem;
+  margin-top: 1rem;
+  transition: all .3s; }
+  input[type=submit]:hover {
+    background: tomato; }
+
+.palette {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around; }
+
+.colorBox {
+  width: 20%;
+  height: 150px;
+  padding: 5px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  transition: background .5s; }
+  .colorBox .colorLabel {
+    margin: auto;
+    color: white; }
+
+.imgContainer {
+  display: none; }
+
+footer {
+  background: black;
+  font-size: 1.2rem;
+  color: grey;
+  padding: 1rem; }
+  footer p {
+    margin: 0; }
+  footer a {
+    color: lightgrey; }
