@@ -12,8 +12,16 @@ app.getSelectedValues = function () {
 	$('select').change(function () {
 		console.log("option changed!");
 
+		// ajax call to php to delete/ clear photo
+		// $.ajax({
+		// 	url: '/image-delete.php',
+		// 	type: 'POST'
+		// }).then(function () {
+		// 	console.log('image deleted');
+		// });
+
 		// Get the selected cateogry type from user
-		var selectedCategory = document.getElementById('photo-category').value;
+		var selectedCategory = $(this).find(':selected').text();
 		console.log(selectedCategory);
 
 		// Contacting information above to get the unsplash picture URL
@@ -34,25 +42,6 @@ app.getSelectedValues = function () {
 			$('.form-color').fadeIn(400);
 			$('.download').fadeIn(400);
 			$('.headerText').css({ "opacity": ".5" });
-		});
-
-		$(this).change(function(){
-			//ajax call for downloading the image to server
-			$.ajax({
-				url: '/image-download.php',
-				type: 'POST',
-				data: {
-					imageUrl: unsplashUrl
-				}
-
-			}).then(function () {
-				// run display image function
-				app.displayImage();
-				$('.form-color').fadeIn(400);
-				$('.download').fadeIn(400);
-				$('.headerText').css({ "opacity": ".5" });
-			});
-
 		});
 	}); // end of select change
 };
